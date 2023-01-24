@@ -3,8 +3,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  #we want our routes to start with /api
-  scope :api, defaults: { format: :json } do
-    devise_for :users
-  end
+
+  resources :users
+  post "/login", to: "authentication#login"
+  post "/signup", to: "registration#create"
+
 end
